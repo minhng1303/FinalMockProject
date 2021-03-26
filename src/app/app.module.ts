@@ -7,6 +7,8 @@ import { NavBarComponent } from './components/views/nav-bar/nav-bar.component';
 import { FooterComponent } from './components/views/footer/footer.component';
 import { LoginComponent } from './components/views/login/login.component';
 import { SignUpComponent } from './components/views/sign-up/sign-up.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -17,6 +19,9 @@ import { SignUpComponent } from './components/views/sign-up/sign-up.component';
     SignUpComponent
   ],
   imports: [
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
     BrowserModule,
     AppRoutingModule
   ],
