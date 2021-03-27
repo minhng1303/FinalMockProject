@@ -1,6 +1,7 @@
 import { ArticleService } from './../../../services/article.service';
 import { Component, OnInit } from '@angular/core';
 import { Article } from 'src/app/models/articles';
+import { ChipsComponent } from '../../commons/chips/chips.component';
 
 @Component({
   selector: 'app-home',

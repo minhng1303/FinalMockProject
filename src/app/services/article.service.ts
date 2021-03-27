@@ -11,6 +11,14 @@ export class ArticleService {
     return this.http.get('https://conduit.productionready.io/api/articles');
   }
 
+  favoriteArticle() {}
+
+  unfavoriteArticle() {}
+
+  // addLike() {
+  //   return this.http.p('https://conduit.productionready.io/api/articles',)
+  // }
+
   getArticleByTag(tag: string) {
     return this.http.get(
       'https://conduit.productionready.io/api/articles?tag=' + tag

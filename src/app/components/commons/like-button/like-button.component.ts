@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
+import { ArticleService } from 'src/app/services/article.service';
 
 @Component({
   selector: 'app-like-button',
   templateUrl: './like-button.component.html',
-  styleUrls: ['./like-button.component.scss']
+  styleUrls: ['./like-button.component.scss'],
 })
 export class LikeButtonComponent implements OnInit {
+  likeCount: number;
 
-  constructor() { }
+  constructor(private articleService: ArticleService) {}
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }
