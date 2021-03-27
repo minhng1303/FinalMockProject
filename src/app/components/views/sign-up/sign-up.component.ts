@@ -34,16 +34,34 @@ export class SignUpComponent implements OnInit {
 
   register(username,email,password) {
     this.clearErrorMessage();
-    this.auth.createUser(username,email,password).toPromise().then(data => {
-      this.router.navigate(['login']);
+    this.auth.createUser(username,email,password).toPromise().then(data => 
+      // this.router.navigate(['login'])
+      {
+      // this.auth.login(email,password).subscribe(data => {
+        let currentUser = 
+        {
+          username: data['user'].username,
+          email: data['user'].email,
+          token: data['user'].token
+        }
+      // Set token và user-info xuống local storage
+      localStorage.setItem('user', JSON.stringify(currentUser))
+      // Check if any token & user-info ở local storage 
+          // --> true: login state = true 
+          // --> false: login state = false
+      if (this.auth.isAuthenticated) 
+      {
+        this.router.navigate(['settings']);
+      }
+      // navigate if login successfully   
     }).catch(err => {
+      console.log(err); 
       if (err.error.errors.email) {
         this.emailError = 'Email ' + err.error.errors.email[0];
       }
       if (err.error.errors.username) {
         this.usernameError = 'The username ' + err.error.errors.username[0];
       }
-      console.log(err); 
     })
   }
 

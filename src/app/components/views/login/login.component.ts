@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { registerUser } from 'src/app/models/registerUser';
 import { AuthService } from 'src/app/services/AuthService/auth.service';
 
 @Component({
@@ -10,6 +11,7 @@ import { AuthService } from 'src/app/services/AuthService/auth.service';
 })
 export class LoginComponent implements OnInit {
   loginForm;
+  messageError: string = '';
   constructor(
     private router:Router, 
     private fb: FormBuilder,
@@ -17,7 +19,7 @@ export class LoginComponent implements OnInit {
     {
       this.loginForm = fb.group({
         email: ['',[Validators.required,Validators.email]],
-        password: ['',[Validators.required, Validators.minLength(6)]]
+        password: ['',[Validators.required, Validators.minLength(8)]]
       })
     }
 
@@ -25,7 +27,20 @@ export class LoginComponent implements OnInit {
   }
 
   login(email,password) {
-   
+    this.auth.login(email,password).toPromise().then(data => {
+      let currentUser = {
+        username: data.user.username,
+        email: data.user.email,
+        token: data.user.token
+      }
+      localStorage.setItem('user', JSON.stringify(currentUser))
+      this.auth.isAuthenticated;
+      this.router.navigate(['settings']);
+      console.log(data);
+    }).catch(err => { 
+      console.log(err);
+      this.messageError = "Email or password " + err.error.errors["email or password"][0];
+    })
   }
 
   get(val) {

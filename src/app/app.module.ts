@@ -8,7 +8,11 @@ import { FooterComponent } from './components/views/footer/footer.component';
 import { LoginComponent } from './components/views/login/login.component';
 import { SignUpComponent } from './components/views/sign-up/sign-up.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthService } from './services/AuthService/auth.service';
+import { ArticleService } from './services/article.service';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { SettingComponent } from './setting/setting.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +20,8 @@ import { HttpClientModule } from '@angular/common/http';
     NavBarComponent,
     FooterComponent,
     LoginComponent,
-    SignUpComponent
+    SignUpComponent,
+    SettingComponent
   ],
   imports: [
     HttpClientModule,
@@ -25,7 +30,12 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [AuthService, ArticleService, 
+  //   provide: HTTP_INTERCEPTORS,
+  //   useClass: AuthInterceptor,
+  //   multi: true
+  // }
+],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
