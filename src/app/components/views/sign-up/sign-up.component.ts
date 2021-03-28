@@ -34,10 +34,7 @@ export class SignUpComponent implements OnInit {
 
   register(username,email,password) {
     this.clearErrorMessage();
-    this.auth.createUser(username,email,password).toPromise().then(data => 
-      // this.router.navigate(['login'])
-      {
-      // this.auth.login(email,password).subscribe(data => {
+    this.auth.createUser(username,email,password).toPromise().then(data => {
         let currentUser = 
         {
           username: data['user'].username,

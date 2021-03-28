@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
       }
       localStorage.setItem('user', JSON.stringify(currentUser))
       this.auth.isAuthenticated;
-      this.router.navigate(['settings']);
+      this.router.navigate(['']);
       console.log(data);
     }).catch(err => { 
       console.log(err);

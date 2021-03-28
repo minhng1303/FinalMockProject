@@ -1,0 +1,20 @@
+<div>
+  <div class="row w-100 mb-3">
+    <div class="col-12 text-light bg-dark d-flex flex-column p-3">
+      <h1 class="display-4 mx-auto"><strong>Title</strong></h1>
+      <div class="col-8 mx-auto d-flex align-items-center">
+        <span>
+          <img
+            src="{{ getImage }}"
+            style="height: 36px; width: 36px"
+            class="rounded-circle"
+          />
+        </span>
+        <div class="d-flex flex-wrap font-small">
+          <span class="col-md-10"> {{ getAuthor }} </span>
+          <span class="col-md-10"> {{ getCreatedTime | date: "medium" }} </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

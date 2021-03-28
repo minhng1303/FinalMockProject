@@ -14,10 +14,10 @@ export class AuthInterceptor implements HttpInterceptor {
 
   constructor(private auth: AuthService) {}
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    if (this.auth.isLogged) {
+    if (this.auth.isAuthenticated) {
       let authRequest = request.clone({
         headers: new HttpHeaders({
-          Authorization: 'Bearer' + localStorage.getItem('token')
+          Authorization: 'Bearer ' + this.auth.currentUser.token
         })
       })
       return next.handle(authRequest);
