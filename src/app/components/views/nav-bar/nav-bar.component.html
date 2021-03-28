@@ -8,7 +8,10 @@
             >Home</a
           >
         </li>
-        <li class="nav-item d-flex align-items-baseline mx-1">
+        <li
+          class="nav-item d-flex align-items-baseline mx-1"
+          *ngIf="auth.isLogged"
+        >
           <span>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -29,7 +32,10 @@
           </span>
           <a class="nav-link" href="#">New Article</a>
         </li>
-        <li class="nav-item d-flex align-items-baseline mx-1">
+        <li
+          class="nav-item d-flex align-items-baseline mx-1"
+          *ngIf="auth.isLogged"
+        >
           <span>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -47,16 +53,28 @@
               />
             </svg>
           </span>
-          <a class="nav-link" href="#">Setting</a>
+          <a class="nav-link" routerLinkActive="active" routerLink="settings"
+            >Setting</a
+          >
         </li>
-        <li class="nav-item ,x-1">
+        <li class="nav-item ,x-1" *ngIf="!auth.isLogged">
           <a class="nav-link" routerLinkActive="active" routerLink="login"
             >Sign In</a
           >
         </li>
-        <li class="nav-item">
+        <li class="nav-item" *ngIf="!auth.isLogged">
           <a class="nav-link" routerLinkActive="active" routerLink="signup"
             >Sign Up</a
+          >
+        </li>
+        <li class="nav-item" *ngIf="auth.isLogged">
+          <a class="nav-link" routerLinkActive="active">
+            {{ auth.currentUser.username }}
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" *ngIf="auth.isLogged" (click)="logOut()"
+            >Sign Out</a
           >
         </li>
       </ul>

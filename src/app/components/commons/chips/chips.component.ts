@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
-import { ArticleService } from 'src/app/services/article.service';
 
 export interface Vegetable {
   name: string;
@@ -10,7 +9,7 @@ export interface Vegetable {
   templateUrl: './chips.component.html',
   styleUrls: ['./chips.component.scss'],
 })
-export class ChipsComponent implements OnInit {
+export class ChipsComponent {
   vegetables: Vegetable[] = [
     { name: 'apple' },
     { name: 'banana' },
@@ -21,9 +20,9 @@ export class ChipsComponent implements OnInit {
   ];
   constructor() {}
 
-  ngOnInit(): void {}
+  // ngOnInit(): void {}
 
-  drop(event: CdkDragDrop<Vegetable[]>) {
-    moveItemInArray(this.vegetables, event.previousIndex, event.currentIndex);
-  }
+  // drop(event: CdkDragDrop<Vegetable[]>) {
+  //   moveItemInArray(this.vegetables, event.previousIndex, event.currentIndex);
+  // }
 }

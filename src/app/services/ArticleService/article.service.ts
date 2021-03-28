@@ -11,6 +11,10 @@ export class ArticleService {
     return this.http.get('https://conduit.productionready.io/api/articles');
   }
 
+  getSlugArticle(slug) {
+    return this.http.get(`https://conduit.productionready.io/api/articles/${slug}`)
+  }
+
   favoriteArticle() {}
 
   unfavoriteArticle() {}
