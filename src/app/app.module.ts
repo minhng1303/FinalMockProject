@@ -11,13 +11,14 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthService } from './services/AuthService/auth.service';
 import { ArticleService } from 'src/app/services/ArticleService/article.service';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
-import { SettingComponent } from './setting/setting.component';
+import { SettingComponent } from './components/views/setting/setting.component';
 import { HomeComponent } from './components/views/home/home.component';
 import { ArticleComponent } from './components/views/article/article.component';
 import { PaginationComponent } from './components/commons/pagination/pagination.component';
 import { LikeButtonComponent } from './components/commons/like-button/like-button.component';
 import { ChipsComponent } from './components/commons/chips/chips.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatChipsModule} from '@angular/material/chips';
 
 @NgModule({
   declarations: [
@@ -34,20 +35,21 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ArticleComponent
   ],
   imports: [
+    MatChipsModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule
   ],
   providers: [ArticleService, AuthService, 
-    // {
-    // provide: HTTP_INTERCEPTORS,
-    // useClass: AuthInterceptor,
-    // multi: true
-    ],
+    {
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true
+    }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

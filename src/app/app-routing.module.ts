@@ -5,7 +5,7 @@ import { HomeComponent } from './components/views/home/home.component';
 import { LoginComponent } from './components/views/login/login.component';
 import { SignUpComponent } from './components/views/sign-up/sign-up.component';
 import { AuthGuard } from './guards/auth.guard';
-import { SettingComponent } from './setting/setting.component';
+import { SettingComponent } from './components/views/setting/setting.component';
 
 const routes: Routes = [
   {

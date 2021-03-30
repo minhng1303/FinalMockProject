@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Injector } from '@angular/core';
 import {
   HttpRequest,
   HttpHandler,
@@ -14,13 +14,14 @@ export class AuthInterceptor implements HttpInterceptor {
 
   constructor(private auth: AuthService) {}
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    if (this.auth.isAuthenticated) {
+    if (this.auth.currentUser) {
       let authRequest = request.clone({
         headers: new HttpHeaders({
-          Authorization: 'Bearer ' + this.auth.currentUser.token
+          Authorization: `Token ${this.auth.currentUser.token}`
         })
       })
       return next.handle(authRequest);
-    }
+    } 
+    return next.handle(request)
   }
 }
