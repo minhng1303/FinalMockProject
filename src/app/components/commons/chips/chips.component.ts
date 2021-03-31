@@ -1,28 +1,20 @@
-import { Component, OnInit } from '@angular/core';
-import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
-export interface Vegetable {
-  name: string;
-}
+
 @Component({
   selector: 'app-chips',
   templateUrl: './chips.component.html',
   styleUrls: ['./chips.component.scss'],
 })
 export class ChipsComponent {
-  vegetables: Vegetable[] = [
-    { name: 'apple' },
-    { name: 'banana' },
-    { name: 'strawberry' },
-    { name: 'orange' },
-    { name: 'kiwi' },
-    { name: 'cherry' },
-  ];
+  @Input('chipList') tagList: string[];
+  @Output() tag: string;
+  @Output() showTagArticle = new EventEmitter()
   constructor() {}
-
-  // ngOnInit(): void {}
-
-  // drop(event: CdkDragDrop<Vegetable[]>) {
-  //   moveItemInArray(this.vegetables, event.previousIndex, event.currentIndex);
-  // }
+  selectedChip: string = '';
+  showTagByArticle(tag) {
+    // this.tag = tag;
+    this.showTagArticle.emit(tag)
+    this.selectedChip = tag;
+  }
 }
