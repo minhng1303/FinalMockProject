@@ -8,10 +8,13 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class ChipsComponent {
   @Input('chipList') tagList: string[];
+  @Output() tag: string;
   @Output() showTagArticle = new EventEmitter()
   constructor() {}
-
-  showTagByArticle() {
-    this.showTagArticle.emit(this.tagList)
+  selectedChip: string = '';
+  showTagByArticle(tag) {
+    // this.tag = tag;
+    this.showTagArticle.emit(tag)
+    this.selectedChip = tag;
   }
 }

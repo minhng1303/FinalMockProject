@@ -61,7 +61,7 @@ export class ArticleService {
         },  
     );
   }
-  // /api/articles/:slug/comments/:id
+
   deleteCommentArticle(slug, id) {
     return this.http.delete(
       `https://conduit.productionready.io/api/articles/${slug}/comments/${id}`,

@@ -19,11 +19,12 @@ import { LikeButtonComponent } from './components/commons/like-button/like-butto
 import { ChipsComponent } from './components/commons/chips/chips.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatChipsModule} from '@angular/material/chips';
+import {MatTabsModule} from '@angular/material/tabs';
+import { TabComponent } from './components/commons/tab/tab.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavBarComponent,
     FooterComponent,
     LoginComponent,
     SignUpComponent,
@@ -32,17 +33,20 @@ import {MatChipsModule} from '@angular/material/chips';
     PaginationComponent,
     LikeButtonComponent,
     ChipsComponent,
-    ArticleComponent
+    ArticleComponent,
+    TabComponent,
+    NavBarComponent,
   ],
   imports: [
     MatChipsModule,
+    MatTabsModule,
     HttpClientModule,
     FormsModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [ArticleService, AuthService, 
     {

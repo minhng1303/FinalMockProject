@@ -12,14 +12,16 @@
     <div class="row">
       <div class="col-8">
         <ul class="nav nav-tabs mb-3">
-          <li class="nav-item">
-            <a class="nav-link" href="#">My Feed</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" href="#">Global Feed</a>
+          <li class="nav-item" *ngFor="let tab of headingTab">
+            <a
+              class="nav-link text-dark"
+              (click)="selectTab(tab)"
+              [class.active-tab]="selectedTab == tab"
+              >{{ tab }}</a
+            >
           </li>
         </ul>
-
+        <!-- <app-tab []></app-tab> -->
         <div
           class="card mb-2 w-100 p-5"
           style="width: 18rem"
@@ -105,7 +107,7 @@
       <div class="col-4 mt-5">
         <app-chips
           [chipList]="chipList"
-          (showTagArticle)="showTagArticle()"
+          (showTagArticle)="showTagArticle($event)"
         ></app-chips>
       </div>
     </div>

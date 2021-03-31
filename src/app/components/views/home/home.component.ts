@@ -13,7 +13,10 @@ export class HomeComponent implements OnInit {
   articles: Article[];
   slugArticle: Article;
   chipList;
+  selectedChip: string = '';
+  selectedTab: string = 'Global Feed'
   isFavorited: boolean = false;
+  headingTab: string[] = ['My Feed', 'Global Feed',]
   constructor(private articleService: ArticleService, private router: Router, private authService: AuthService) {}
 
   ngOnInit(): void {
@@ -30,7 +33,16 @@ export class HomeComponent implements OnInit {
     this.router.navigate([`article/${slug}`])
   }
 
-  showTagArticle() {
+  showTagArticle(e) {
+    this.articleService.getArticleByTag(e).subscribe(res => {
+      this.articles = res['articles']
+      this.selectedChip = e;
+      this.selectedTab = `#${e}`;      
+      if (this.headingTab.length > 2) {
+        this.headingTab.pop();
+      }
+      this.headingTab.push(`#${e}`); 
+    })
     
   }
 
@@ -56,5 +68,11 @@ export class HomeComponent implements OnInit {
         this.articles = res.articles;
       });
     })
+  }
+
+  selectTab(tab: string) {
+    this.selectedTab = tab;
+    console.log(tab);
+    
   }
 }
