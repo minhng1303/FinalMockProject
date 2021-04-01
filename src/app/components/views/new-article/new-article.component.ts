@@ -30,7 +30,7 @@ export class NewArticleComponent implements OnInit {
 
   creatArticle(title: string, description: string, body: string) {
     this.articleService
-      .creatArticle(title, description, body)
+      .createArticle(title, description, body)
       .toPromise()
       .then((res) => {
         console.log(res);
@@ -39,7 +39,7 @@ export class NewArticleComponent implements OnInit {
   }
 
   get(val) {
-    return this.createArticleForm.controls[val];
+    return this.createArticleForm.controls['val'];
   }
 
   log() {

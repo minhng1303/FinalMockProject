@@ -7,12 +7,10 @@ import { MyProfileComponent } from './components/views/my-profile/my-profile.com
 import { NewArticleComponent } from './components/views/new-article/new-article.component';
 import { SignUpComponent } from './components/views/sign-up/sign-up.component';
 import { AuthGuard } from './guards/auth.guard';
-// <<<<<<< createProfile_Article
-// import { SettingComponent } from './setting/setting.component';
-// import { MyArticleComponent } from './components/views/my-profile/my-article/my-article.component';
-// import { FavoritedArticleComponent } from './components/views/my-profile/favorited-article/favorited-article.component';
-// =======
-// >>>>>>> master
+import { SettingComponent } from 'src/app/components/views/setting/setting.component'
+import { MyArticleComponent } from './components/views/my-profile/my-article/my-article.component';
+import { FavoritedArticleComponent } from './components/views/my-profile/favorited-article/favorited-article.component';
+
 
 const routes: Routes = [
   {
@@ -43,16 +41,16 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: 'self',
+        redirectTo: 'my-profile',
         pathMatch: 'full',
       },
       {
-        path: 'self',
+        path: 'my-profile',
         component: MyArticleComponent,
         canActivate: [AuthGuard],
       },
       {
-        path: 'favorited',
+        path: 'favorite',
         component: FavoritedArticleComponent,
         canActivate: [AuthGuard],
       },
