@@ -1,4 +1,4 @@
-import { ArticleService } from 'src/app/services/ArticleService/article.service'
+import { ArticleService } from 'src/app/services/ArticleService/article.service';
 import { Component, OnInit } from '@angular/core';
 import { Article } from 'src/app/models/articles';
 import { Router } from '@angular/router';
@@ -28,10 +28,22 @@ export class HomeComponent implements OnInit {
     })
   }
 
-  goToArticle(article) {    
-    let slug = article.slug
-    this.router.navigate([`article/${slug}`])
-  }
+// <<<<<<< createProfile_Article
+//   goToArticle(article) {
+//     let slug = article.slug;
+//     // this.articleService.getSlugArticle(slug).subscribe((res:any) => {
+//     //   this.slugArticle = res;
+//     //   console.log(res);
+//     // })
+//     console.log(slug);
+
+//     this.router.navigate([`article/${slug}`]);
+// =======
+//   goToArticle(article) {    
+//     let slug = article.slug
+//     this.router.navigate([`article/${slug}`])
+// >>>>>>> master
+//   }
 
   showTagArticle(e) {
     this.articleService.getArticleByTag(e).subscribe(res => {

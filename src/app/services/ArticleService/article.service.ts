@@ -1,19 +1,50 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { AuthService } from '../AuthService/auth.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ArticleService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private auth: AuthService) {}
 
   getArticle() {
     return this.http.get('https://conduit.productionready.io/api/articles');
   }
 
   getSlugArticle(slug) {
-    return this.http.get(`https://conduit.productionready.io/api/articles/${slug}`)
+    return this.http.get(
+      `https://conduit.productionready.io/api/articles/${slug}`
+    );
   }
+
+// <<<<<<< createProfile_Article
+//   creatArticle(title, description, body) {
+//     return this.http.post(
+//       'https://conduit.productionready.io/api/articles',
+//       {
+//         title: title,
+//         description: description,
+//         body: body,
+//       },
+//       {
+//         headers: {
+//           Authorization: `Token ${this.auth.currentUser.token}`,
+//         },
+//       }
+//     );
+//   }
+
+//   getProfile(val) {
+//     return this.http.get(
+//       `https://conduit.productionready.io/api/profiles/${val}`
+//     );
+//   }
+
+  // addLike() {
+  //   return this.http.p('https://conduit.productionready.io/api/articles',)
+  // }
 
   getArticleByTag(tag: string) {
     return this.http.get(
@@ -27,9 +58,9 @@ export class ArticleService {
     );
   }
 
-  getArticleByFav(user: string) {
+  getArticleByFav(username: string) {
     return this.http.get(
-      'https://conduit.productionready.io/api/articles?favorited=' + user
+      'https://conduit.productionready.io/api/articles?favorited=' + username
     );
   }
 
@@ -38,49 +69,48 @@ export class ArticleService {
       'https://conduit.productionready.io/api/articles?limit' + skip
     );
   }
+//   getSingleArticle(slug: string) {
+//     return this.http.get(
+//       'https://conduit.productionready.io/api/articles/:' + slug
+//     );
+//   }
 
-  getSingleArticle(slug: string) {
-    return this.http.get(
-      'https://conduit.productionready.io/api/articles/:' + slug
-    );
-  }
+//   getCommentArticle(slug) {
+//     return this.http.get(
+//       'https://conduit.productionready.io/api/articles/' + slug + '/comments'
+//     );
+//   }
 
-  getCommentArticle(slug) {
-    return this.http.get(
-      'https://conduit.productionready.io/api/articles/' + slug + '/comments'
-    );
-  }
+//   addCommentArticle(slug, body: string) {
+//     return this.http.post(
+//       'https://conduit.productionready.io/api/articles/' + slug + '/comments', 
+//         {
+//           "comment": {
+//             "body": body
+//           }
+//         },  
+//     );
+//   }
 
-  addCommentArticle(slug, body: string) {
-    return this.http.post(
-      'https://conduit.productionready.io/api/articles/' + slug + '/comments', 
-        {
-          "comment": {
-            "body": body
-          }
-        },  
-    );
-  }
+//   deleteCommentArticle(slug, id) {
+//     return this.http.delete(
+//       `https://conduit.productionready.io/api/articles/${slug}/comments/${id}`,
+//     );
+//   }
 
-  deleteCommentArticle(slug, id) {
-    return this.http.delete(
-      `https://conduit.productionready.io/api/articles/${slug}/comments/${id}`,
-    );
-  }
-
-  creatArticle(
-    title: string,
-    description: string,
-    body: string,
-    tagList: Array<string>
-  ) {
-    return this.http.post('https://conduit.productionready.io/api/articles', {
-      title: title,
-      description: description,
-      body: body,
-      tagList: tagList,
-    });
-  }
+//   creatArticle(
+//     title: string,
+//     description: string,
+//     body: string,
+//     tagList: Array<string>
+//   ) {
+//     return this.http.post('https://conduit.productionready.io/api/articles', {
+//       title: title,
+//       description: description,
+//       body: body,
+//       tagList: tagList,
+//     });
+//   }
 
   updateArticle(title: string, description: string, body: string) {
     return this.http.put(
