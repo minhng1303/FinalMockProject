@@ -1,6 +1,4 @@
 export interface Article {
-  article: [
-    {
     slug: string;
     title: string;
     description: string;
@@ -17,6 +15,4 @@ export interface Article {
       following: boolean;
       }
     }
-  ]
-}
 

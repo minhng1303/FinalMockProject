@@ -6,3 +6,14 @@
 a {
   cursor: pointer;
 }
+.isFavorited {
+  background-color: #5cb85c;
+  color: white;
+}
+.nav-link {
+  font-size: medium;
+}
+.active-tab {
+  color: #5cb85c !important;
+  border-bottom: 1px solid #5cb85c;
+}

@@ -11,22 +11,26 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthService } from './services/AuthService/auth.service';
 import { ArticleService } from 'src/app/services/ArticleService/article.service';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
-import { SettingComponent } from './setting/setting.component';
+import { SettingComponent } from './components/views/setting/setting.component';
 import { HomeComponent } from './components/views/home/home.component';
 import { ArticleComponent } from './components/views/article/article.component';
 import { PaginationComponent } from './components/commons/pagination/pagination.component';
 import { LikeButtonComponent } from './components/commons/like-button/like-button.component';
 import { ChipsComponent } from './components/commons/chips/chips.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NewArticleComponent } from './components/views/new-article/new-article.component';
-import { MyProfileComponent } from './components/views/my-profile/my-profile.component';
-import { MyArticleComponent } from './components/views/my-profile/my-article/my-article.component';
-import { FavoritedArticleComponent } from './components/views/my-profile/favorited-article/favorited-article.component';
+// <<<<<<< createProfile_Article
+// import { NewArticleComponent } from './components/views/new-article/new-article.component';
+// import { MyProfileComponent } from './components/views/my-profile/my-profile.component';
+// import { MyArticleComponent } from './components/views/my-profile/my-article/my-article.component';
+// import { FavoritedArticleComponent } from './components/views/my-profile/favorited-article/favorited-article.component';
+// =======
+// import {MatChipsModule} from '@angular/material/chips';
+// import {MatTabsModule} from '@angular/material/tabs';
+// import { TabComponent } from './components/commons/tab/tab.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavBarComponent,
     FooterComponent,
     LoginComponent,
     SignUpComponent,
@@ -36,26 +40,33 @@ import { FavoritedArticleComponent } from './components/views/my-profile/favorit
     LikeButtonComponent,
     ChipsComponent,
     ArticleComponent,
-    NewArticleComponent,
-    MyProfileComponent,
-    MyArticleComponent,
-    FavoritedArticleComponent
+// <<<<<<< createProfile_Article
+//     NewArticleComponent,
+//     MyProfileComponent,
+//     MyArticleComponent,
+//     FavoritedArticleComponent
+// =======
+//     TabComponent,
+//     NavBarComponent,
+// >>>>>>> master
   ],
   imports: [
+    MatChipsModule,
+    MatTabsModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
   ],
   providers: [ArticleService, AuthService, 
-    // {
-    // provide: HTTP_INTERCEPTORS,
-    // useClass: AuthInterceptor,
-    // multi: true
-    ],
+    {
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true
+    }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

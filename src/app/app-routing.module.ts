@@ -7,9 +7,12 @@ import { MyProfileComponent } from './components/views/my-profile/my-profile.com
 import { NewArticleComponent } from './components/views/new-article/new-article.component';
 import { SignUpComponent } from './components/views/sign-up/sign-up.component';
 import { AuthGuard } from './guards/auth.guard';
-import { SettingComponent } from './setting/setting.component';
-import { MyArticleComponent } from './components/views/my-profile/my-article/my-article.component';
-import { FavoritedArticleComponent } from './components/views/my-profile/favorited-article/favorited-article.component';
+// <<<<<<< createProfile_Article
+// import { SettingComponent } from './setting/setting.component';
+// import { MyArticleComponent } from './components/views/my-profile/my-article/my-article.component';
+// import { FavoritedArticleComponent } from './components/views/my-profile/favorited-article/favorited-article.component';
+// =======
+// >>>>>>> master
 
 const routes: Routes = [
   {
