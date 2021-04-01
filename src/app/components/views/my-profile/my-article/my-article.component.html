@@ -4,6 +4,7 @@
   *ngFor="let myArticle of myArticles"
 >
   <div class="d-flex">
+    <img src="{{ userImage }}" class="card-img-top img m-2" alt="..." />
     <img src="{{ getImageUrl }}" class="card-img-top img m-2" alt="..." />
     <div class="m-1 mr-auto">
       <h3 (click)="goToMyArticle(myArticle)" class="m-0">

@@ -3,14 +3,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { ArticleComponent } from './components/views/article/article.component';
 import { HomeComponent } from './components/views/home/home.component';
 import { LoginComponent } from './components/views/login/login.component';
-import { MyProfileComponent } from './components/views/my-profile/my-profile.component';
-import { NewArticleComponent } from './components/views/new-article/new-article.component';
 import { SignUpComponent } from './components/views/sign-up/sign-up.component';
 import { AuthGuard } from './guards/auth.guard';
-import { SettingComponent } from 'src/app/components/views/setting/setting.component'
+import { SettingComponent } from './components/views/setting/setting.component';
+import { NewArticleComponent } from './components/views/new-article/new-article.component';
+import { MyProfileComponent } from './components/views/my-profile/my-profile.component';
 import { MyArticleComponent } from './components/views/my-profile/my-article/my-article.component';
 import { FavoritedArticleComponent } from './components/views/my-profile/favorited-article/favorited-article.component';
-
 
 const routes: Routes = [
   {
@@ -25,7 +24,7 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
-    path: 'new_article',
+    path: 'new-article',
     component: NewArticleComponent,
     canActivate: [AuthGuard],
   },
@@ -41,11 +40,11 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: 'my-profile',
+        redirectTo: 'my-feed',
         pathMatch: 'full',
       },
       {
-        path: 'my-profile',
+        path: 'my-feed',
         component: MyArticleComponent,
         canActivate: [AuthGuard],
       },

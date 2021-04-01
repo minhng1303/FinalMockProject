@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { UserService } from 'src/app/services/UserService/user.service';
 import { Article } from 'src/app/models/articles';
-import { registerUser } from 'src/app/models/registerUser';
 import { ArticleService } from 'src/app/services/ArticleService/article.service';
 import { AuthService } from 'src/app/services/AuthService/auth.service';
 
@@ -11,21 +12,37 @@ import { AuthService } from 'src/app/services/AuthService/auth.service';
 })
 export class FavoritedArticleComponent implements OnInit {
   favoritedArticles: Article[] = [];
-  imageURL: string;
-  user: registerUser;
+  username = this.auth.currentUser.username;
+  userImage = '';
+  slugArticle;
   constructor(
     private articleService: ArticleService,
-    private auth: AuthService
+    private auth: AuthService,
+    private user: UserService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
-    this.user = this.auth.currentUser;
+    this.getImageUrl
     this.articleService
       .getArticleByFav(this.auth.currentUser.username)
       .subscribe((res: any) => {
         this.favoritedArticles = res.articles;
-        console.log(this.favoritedArticles);
       });
   }
+
+  get getImageUrl() {
+    this.user.getUser(this.username).subscribe((res: any) => {
+      this.userImage = res.profile.image;
+    });
+    return this.userImage;
+  }
+
+  goToArticle(favoritedArticle) {
+    let slug = favoritedArticle.slug;
+    this.router.navigate([`article/${slug}`]);
+  }
+    
+  
 
 }

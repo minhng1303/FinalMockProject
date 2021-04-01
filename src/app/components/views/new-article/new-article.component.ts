@@ -29,11 +29,9 @@ export class NewArticleComponent implements OnInit {
   }
 
   creatArticle(title: string, description: string, body: string) {
-    this.articleService
-      .createArticle(title, description, body)
+    this.articleService.createArticle(title, description, body)
       .toPromise()
       .then((res) => {
-        console.log(res);
         this.router.navigate(['']);
       });
   }

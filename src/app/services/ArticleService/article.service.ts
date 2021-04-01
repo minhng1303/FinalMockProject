@@ -83,34 +83,76 @@ export class ArticleService {
 
   addCommentArticle(slug, body: string) {
     return this.http.post(
-      'https://conduit.productionready.io/api/articles/' + slug + '/comments', 
-        {
-          "comment": {
-            "body": body
-          }
-        },  
+      'https://conduit.productionready.io/api/articles/' + slug + '/comments',
+      {
+        comment: {
+          body: body,
+        },
+      }
     );
   }
 
   deleteCommentArticle(slug, id) {
     return this.http.delete(
-      `https://conduit.productionready.io/api/articles/${slug}/comments/${id}`,
+      `https://conduit.productionready.io/api/articles/${slug}/comments/${id}`
     );
   }
 
-  // createArticle(
-  //   title: string,
-  //   description: string,
-  //   body: string,
-  //   tagList: Array<string>
-  // ) {
-  //   return this.http.post('https://conduit.productionready.io/api/articles', {
-  //     title: title,
-  //     description: description,
-  //     body: body,
-  //     tagList: tagList,
-  //   });
-  // }
+  creatArticle(
+    title: string,
+    description: string,
+    body: string,
+    tagList: Array<string>
+  ) {
+    return this.http.post('https://conduit.productionready.io/api/articles', {
+      title: title,
+      description: description,
+      body: body,
+      tagList: tagList,
+    });
+  }
+//   getSingleArticle(slug: string) {
+//     return this.http.get(
+//       'https://conduit.productionready.io/api/articles/:' + slug
+//     );
+//   }
+
+//   getCommentArticle(slug) {
+//     return this.http.get(
+//       'https://conduit.productionready.io/api/articles/' + slug + '/comments'
+//     );
+//   }
+
+//   addCommentArticle(slug, body: string) {
+//     return this.http.post(
+//       'https://conduit.productionready.io/api/articles/' + slug + '/comments', 
+//         {
+//           "comment": {
+//             "body": body
+//           }
+//         },  
+//     );
+//   }
+
+//   deleteCommentArticle(slug, id) {
+//     return this.http.delete(
+//       `https://conduit.productionready.io/api/articles/${slug}/comments/${id}`,
+//     );
+//   }
+
+//   creatArticle(
+//     title: string,
+//     description: string,
+//     body: string,
+//     tagList: Array<string>
+//   ) {
+//     return this.http.post('https://conduit.productionready.io/api/articles', {
+//       title: title,
+//       description: description,
+//       body: body,
+//       tagList: tagList,
+//     });
+//   }
 
   updateArticle(title: string, description: string, body: string) {
     return this.http.put(
@@ -127,32 +169,26 @@ export class ArticleService {
 
   deleteArticle(slug) {
     return this.http.delete(
-      `https://conduit.productionready.io/api/articles/${slug}`,
+      `https://conduit.productionready.io/api/articles/${slug}`
     );
   }
 
   addFavoriteArticle(slug) {
     return this.http.post(
       `https://conduit.productionready.io/api/articles/${slug}/favorite`,
-      {
-        
-      }
-    )
+      {}
+    );
   }
 
   removeFavoriteArticle(slug) {
     return this.http.delete(
       `https://conduit.productionready.io/api/articles/${slug}/favorite`,
-      {
-        
-      }
-    )
+      {}
+    );
   }
 
   getTag() {
-    return this.http.get(
-      'https://conduit.productionready.io/api/tags'
-    );
+    return this.http.get('https://conduit.productionready.io/api/tags');
   }
 
 }
