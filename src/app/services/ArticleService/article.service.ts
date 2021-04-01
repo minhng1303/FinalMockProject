@@ -12,7 +12,9 @@ export class ArticleService {
   }
 
   getSlugArticle(slug) {
-    return this.http.get(`https://conduit.productionready.io/api/articles/${slug}`)
+    return this.http.get(
+      `https://conduit.productionready.io/api/articles/${slug}`
+    );
   }
 
   getArticleByTag(tag: string) {
@@ -53,18 +55,18 @@ export class ArticleService {
 
   addCommentArticle(slug, body: string) {
     return this.http.post(
-      'https://conduit.productionready.io/api/articles/' + slug + '/comments', 
-        {
-          "comment": {
-            "body": body
-          }
-        },  
+      'https://conduit.productionready.io/api/articles/' + slug + '/comments',
+      {
+        comment: {
+          body: body,
+        },
+      }
     );
   }
 
   deleteCommentArticle(slug, id) {
     return this.http.delete(
-      `https://conduit.productionready.io/api/articles/${slug}/comments/${id}`,
+      `https://conduit.productionready.io/api/articles/${slug}/comments/${id}`
     );
   }
 
@@ -97,32 +99,31 @@ export class ArticleService {
 
   deleteArticle(slug) {
     return this.http.delete(
-      `https://conduit.productionready.io/api/articles/${slug}`,
+      `https://conduit.productionready.io/api/articles/${slug}`
     );
   }
 
   addFavoriteArticle(slug) {
     return this.http.post(
       `https://conduit.productionready.io/api/articles/${slug}/favorite`,
-      {
-        
-      }
-    )
+      {}
+    );
   }
 
   removeFavoriteArticle(slug) {
     return this.http.delete(
       `https://conduit.productionready.io/api/articles/${slug}/favorite`,
-      {
-        
-      }
-    )
-  }
-
-  getTag() {
-    return this.http.get(
-      'https://conduit.productionready.io/api/tags'
+      {}
     );
   }
 
+  getTag() {
+    return this.http.get('https://conduit.productionready.io/api/tags');
+  }
+
+  getProfile(val) {
+    return this.http.get(
+      `https://conduit.productionready.io/api/profiles/${val}`
+    );
+  }
 }

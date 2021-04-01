@@ -18,9 +18,13 @@ import { PaginationComponent } from './components/commons/pagination/pagination.
 import { LikeButtonComponent } from './components/commons/like-button/like-button.component';
 import { ChipsComponent } from './components/commons/chips/chips.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatChipsModule} from '@angular/material/chips';
-import {MatTabsModule} from '@angular/material/tabs';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatTabsModule } from '@angular/material/tabs';
 import { TabComponent } from './components/commons/tab/tab.component';
+import { MyProfileComponent } from './components/views/my-profile/my-profile.component';
+import { MyArticleComponent } from './components/views/my-profile/my-article/my-article.component';
+import { FavoritedArticleComponent } from './components/views/my-profile/favorited-article/favorited-article.component';
+import { NewArticleComponent } from './components/views/new-article/new-article.component';
 
 @NgModule({
   declarations: [
@@ -36,24 +40,31 @@ import { TabComponent } from './components/commons/tab/tab.component';
     ArticleComponent,
     TabComponent,
     NavBarComponent,
+    MyProfileComponent,
+    FavoritedArticleComponent,
+    MyArticleComponent,
+    NewArticleComponent,
   ],
   imports: [
     MatChipsModule,
     MatTabsModule,
     HttpClientModule,
-    FormsModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
+    FormsModule,
   ],
-  providers: [ArticleService, AuthService, 
+  providers: [
+    ArticleService,
+    AuthService,
     {
-    provide: HTTP_INTERCEPTORS,
-    useClass: AuthInterceptor,
-    multi: true
-    }],
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
