@@ -4,6 +4,9 @@
   *ngFor="let favoritedArticle of favoritedArticles"
 >
   <div class="d-flex">
+    <img src="{{ userImage }}" class="card-img-top img m-2" alt="..." />
+    <div class="m-1 mr-auto">
+      <h3 (click)="goToArticle(favoritedArticle)" class="m-0">
     <img src="{{ getImageUrl }}" class="card-img-top img m-2" alt="..." />
     <div class="m-1 mr-auto">
       <h3 (click)="goToMyArticle(myArticle)" class="m-0">
@@ -31,6 +34,13 @@
   </div>
 
   <div class="card-body">
+    <h5 (click)="goToArticle(Article)">
+      <a> {{ favoritedArticle.title }} </a>
+    </h5>
+    <p (click)="goToArticle(Article)">
+      <a>{{ favoritedArticle.body }}</a>
+    </p>
+    <span (click)="goToArticle(Article)" class="btn btn-link p-0"
     <h5 (click)="goToMyArticle(myArticle)">
       <a> {{ favoritedArticle.title }} </a>
     </h5>

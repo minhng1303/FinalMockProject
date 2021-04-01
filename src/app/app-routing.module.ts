@@ -7,12 +7,11 @@ import { MyProfileComponent } from './components/views/my-profile/my-profile.com
 import { NewArticleComponent } from './components/views/new-article/new-article.component';
 import { SignUpComponent } from './components/views/sign-up/sign-up.component';
 import { AuthGuard } from './guards/auth.guard';
-// <<<<<<< createProfile_Article
-// import { SettingComponent } from './setting/setting.component';
-// import { MyArticleComponent } from './components/views/my-profile/my-article/my-article.component';
-// import { FavoritedArticleComponent } from './components/views/my-profile/favorited-article/favorited-article.component';
-// =======
-// >>>>>>> master
+import { SettingComponent } from './components/views/setting/setting.component';
+import { NewArticleComponent } from './components/views/new-article/new-article.component';
+import { MyProfileComponent } from './components/views/my-profile/my-profile.component';
+import { MyArticleComponent } from './components/views/my-profile/my-article/my-article.component';
+import { FavoritedArticleComponent } from './components/views/my-profile/favorited-article/favorited-article.component';
 
 const routes: Routes = [
   {
@@ -34,6 +33,11 @@ const routes: Routes = [
   {
     path: 'setting',
     component: SettingComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'new_article',
+    component: NewArticleComponent,
     canActivate: [AuthGuard],
   },
   {

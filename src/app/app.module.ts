@@ -18,15 +18,21 @@ import { PaginationComponent } from './components/commons/pagination/pagination.
 import { LikeButtonComponent } from './components/commons/like-button/like-button.component';
 import { ChipsComponent } from './components/commons/chips/chips.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-// <<<<<<< createProfile_Article
+import { MatChipsModule } from '@angular/material/chips';
+import { MatTabsModule } from '@angular/material/tabs';
+import { TabComponent } from './components/commons/tab/tab.component';
+import { MyProfileComponent } from './components/views/my-profile/my-profile.component';
+import { MyArticleComponent } from './components/views/my-profile/my-article/my-article.component';
+import { FavoritedArticleComponent } from './components/views/my-profile/favorited-article/favorited-article.component';
+import { NewArticleComponent } from './components/views/new-article/new-article.component';
 // import { NewArticleComponent } from './components/views/new-article/new-article.component';
 // import { MyProfileComponent } from './components/views/my-profile/my-profile.component';
 // import { MyArticleComponent } from './components/views/my-profile/my-article/my-article.component';
 // import { FavoritedArticleComponent } from './components/views/my-profile/favorited-article/favorited-article.component';
-// =======
 // import {MatChipsModule} from '@angular/material/chips';
 // import {MatTabsModule} from '@angular/material/tabs';
 // import { TabComponent } from './components/commons/tab/tab.component';
+
 
 @NgModule({
   declarations: [
@@ -40,33 +46,43 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     LikeButtonComponent,
     ChipsComponent,
     ArticleComponent,
+    TabComponent,
+    NavBarComponent,
+    MyProfileComponent,
+    FavoritedArticleComponent,
+    MyArticleComponent,
+    NewArticleComponent,
 // <<<<<<< createProfile_Article
 //     NewArticleComponent,
 //     MyProfileComponent,
 //     MyArticleComponent,
 //     FavoritedArticleComponent
-// =======
+/
 //     TabComponent,
 //     NavBarComponent,
 // >>>>>>> master
+
   ],
   imports: [
     MatChipsModule,
     MatTabsModule,
     HttpClientModule,
-    FormsModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
+    FormsModule,
   ],
-  providers: [ArticleService, AuthService, 
+  providers: [
+    ArticleService,
+    AuthService,
     {
-    provide: HTTP_INTERCEPTORS,
-    useClass: AuthInterceptor,
-    multi: true
-    }],
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -28,6 +28,11 @@ export class NewArticleComponent implements OnInit {
     });
   }
 
+  creatArticle(title: string, description: string, body: string, tagList: []) {
+    this.articleService
+      .creatArticle(title, description, body, tagList)
+      .toPromise()
+      .then((res) =>
   creatArticle(title: string, description: string, body: string) {
     this.articleService
       .creatArticle(title, description, body)
