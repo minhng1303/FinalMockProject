@@ -1,23 +1,45 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { AuthService } from '../AuthService/auth.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ArticleService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private auth: AuthService) {}
 
   getArticle() {
     return this.http.get('https://conduit.productionready.io/api/articles');
   }
 
   getSlugArticle(slug) {
-    return this.http.get(`https://conduit.productionready.io/api/articles/${slug}`)
+    return this.http.get(
+      `https://conduit.productionready.io/api/articles/${slug}`
+    );
   }
 
-  favoriteArticle() {}
+  creatArticle(title, description, body) {
+    return this.http.post(
+      'https://conduit.productionready.io/api/articles',
+      {
+        title: title,
+        description: description,
+        body: body,
+      },
+      {
+        headers: {
+          Authorization: `Token ${this.auth.currentUser.token}`,
+        },
+      }
+    );
+  }
 
-  unfavoriteArticle() {}
+  getProfile(val) {
+    return this.http.get(
+      `https://conduit.productionready.io/api/profiles/${val}`
+    );
+  }
 
   // addLike() {
   //   return this.http.p('https://conduit.productionready.io/api/articles',)
@@ -35,9 +57,9 @@ export class ArticleService {
     );
   }
 
-  getArticleByFav(user: string) {
+  getArticleByFav(username: string) {
     return this.http.get(
-      'https://conduit.productionready.io/api/articles?favorited=' + user
+      'https://conduit.productionready.io/api/articles?favorited=' + username
     );
   }
 
@@ -45,26 +67,6 @@ export class ArticleService {
     return this.http.get(
       'https://conduit.productionready.io/api/articles?limit' + skip
     );
-  }
-
-  getSingleArticle(slug: string) {
-    return this.http.get(
-      'https://conduit.productionready.io/api/articles/:' + slug
-    );
-  }
-
-  creatArticle(
-    title: string,
-    description: string,
-    body: string,
-    tagList: Array<string>
-  ) {
-    return this.http.post('https://conduit.productionready.io/api/articles', {
-      title: title,
-      description: description,
-      body: body,
-      tagList: tagList,
-    });
   }
 
   updateArticle(title: string, description: string, body: string) {

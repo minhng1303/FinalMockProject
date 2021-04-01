@@ -18,6 +18,10 @@ import { PaginationComponent } from './components/commons/pagination/pagination.
 import { LikeButtonComponent } from './components/commons/like-button/like-button.component';
 import { ChipsComponent } from './components/commons/chips/chips.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NewArticleComponent } from './components/views/new-article/new-article.component';
+import { MyProfileComponent } from './components/views/my-profile/my-profile.component';
+import { MyArticleComponent } from './components/views/my-profile/my-article/my-article.component';
+import { FavoritedArticleComponent } from './components/views/my-profile/favorited-article/favorited-article.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +35,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     PaginationComponent,
     LikeButtonComponent,
     ChipsComponent,
-    ArticleComponent
+    ArticleComponent,
+    NewArticleComponent,
+    MyProfileComponent,
+    MyArticleComponent,
+    FavoritedArticleComponent
   ],
   imports: [
     HttpClientModule,
