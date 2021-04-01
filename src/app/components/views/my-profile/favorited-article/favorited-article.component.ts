@@ -4,6 +4,9 @@ import { Article } from 'src/app/models/articles';
 import { ArticleService } from 'src/app/services/ArticleService/article.service';
 import { AuthService } from 'src/app/services/AuthService/auth.service';
 import { UserService } from 'src/app/services/UserService/user.service';
+import { Article } from 'src/app/models/articles';
+import { ArticleService } from 'src/app/services/ArticleService/article.service';
+import { AuthService } from 'src/app/services/AuthService/auth.service';
 
 @Component({
   selector: 'app-favorited-article',
@@ -24,6 +27,12 @@ export class FavoritedArticleComponent implements OnInit {
 
   ngOnInit(): void {
     this.getImageUrl;
+  constructor(
+    private articleService: ArticleService,
+    private auth: AuthService
+  ) {}
+
+  ngOnInit(): void {
     this.articleService
       .getArticleByFav(this.auth.currentUser.username)
       .subscribe((res: any) => {
@@ -42,5 +51,8 @@ export class FavoritedArticleComponent implements OnInit {
     let slug = favoritedArticle.slug;
 
     this.router.navigate([`article/${slug}`]);
+  }
+    console.log(this.favoritedArticles);
+      });
   }
 }

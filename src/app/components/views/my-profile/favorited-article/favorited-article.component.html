@@ -7,6 +7,9 @@
     <img src="{{ userImage }}" class="card-img-top img m-2" alt="..." />
     <div class="m-1 mr-auto">
       <h3 (click)="goToArticle(favoritedArticle)" class="m-0">
+    <img src="{{ getImageUrl }}" class="card-img-top img m-2" alt="..." />
+    <div class="m-1 mr-auto">
+      <h3 (click)="goToMyArticle(myArticle)" class="m-0">
         <a>{{ favoritedArticle.author.username }} </a>
       </h3>
       <p class="m-0">{{ favoritedArticle.createdAt | date }}</p>
@@ -38,6 +41,13 @@
       <a>{{ favoritedArticle.body }}</a>
     </p>
     <span (click)="goToArticle(Article)" class="btn btn-link p-0"
+    <h5 (click)="goToMyArticle(myArticle)">
+      <a> {{ favoritedArticle.title }} </a>
+    </h5>
+    <p (click)="goToMyArticle(myArticle)">
+      <a>{{ favoritedArticle.body }}</a>
+    </p>
+    <span (click)="goToMyArticle(myArticle)" class="btn btn-link p-0"
       >Read more</span
     >
   </div>

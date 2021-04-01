@@ -32,7 +32,13 @@ export class NewArticleComponent implements OnInit {
     this.articleService
       .creatArticle(title, description, body, tagList)
       .toPromise()
+      .then((res) =>
+  creatArticle(title: string, description: string, body: string) {
+    this.articleService
+      .creatArticle(title, description, body)
+      .toPromise()
       .then((res) => {
+        console.log(res);
         this.router.navigate(['']);
       });
   }

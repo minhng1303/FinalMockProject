@@ -25,6 +25,13 @@ export class MyArticleComponent implements OnInit {
 
   ngOnInit(): void {
     this.getImageUrl;
+  constructor(
+    private articleService: ArticleService,
+    private auth: AuthService,
+    private router: Router
+  ) {}
+
+  ngOnInit(): void {
     this.articleService
       .getArticleByAuthor(this.auth.currentUser.username)
       .subscribe((res: any) => {
@@ -34,7 +41,6 @@ export class MyArticleComponent implements OnInit {
 
   goToMyArticle(myArticle) {
     console.log(myArticle);
-
     let mySlugArticle = myArticle.slug;
     this.router.navigate([`article/${mySlugArticle}`]);
   }
@@ -44,5 +50,6 @@ export class MyArticleComponent implements OnInit {
       this.userImage = res.profile.image;
     });
     return this.userImage;
+    return this.myArticles[0].author.image;
   }
 }

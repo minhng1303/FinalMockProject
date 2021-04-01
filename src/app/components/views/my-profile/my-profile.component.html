@@ -5,6 +5,12 @@
   </div>
 
   <div class="d-flex justify-content-end">
+  <div>
+    <img class="img" src="{{ currentUser.image }}" alt="" />
+    <h3>{{ currentUser.username }}</h3>
+  </div>
+
+  <div>
     <button type="button" class="btn btn-primary" (click)="goToSetting()">
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -31,11 +37,14 @@
     <li class="nav-item">
       <a class="nav-link active" routerLink="self" routerLinkActive="active"
         >My feeds</a
+        >My articles</a
       >
     </li>
     <li class="nav-item">
       <a class="nav-link" routerLink="favorited" routerLinkActive="active"
         >Favorited Articles</a
+
+        >Favorited articles</a
       >
     </li>
   </ul>

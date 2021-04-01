@@ -25,6 +25,14 @@ import { MyProfileComponent } from './components/views/my-profile/my-profile.com
 import { MyArticleComponent } from './components/views/my-profile/my-article/my-article.component';
 import { FavoritedArticleComponent } from './components/views/my-profile/favorited-article/favorited-article.component';
 import { NewArticleComponent } from './components/views/new-article/new-article.component';
+// import { NewArticleComponent } from './components/views/new-article/new-article.component';
+// import { MyProfileComponent } from './components/views/my-profile/my-profile.component';
+// import { MyArticleComponent } from './components/views/my-profile/my-article/my-article.component';
+// import { FavoritedArticleComponent } from './components/views/my-profile/favorited-article/favorited-article.component';
+// import {MatChipsModule} from '@angular/material/chips';
+// import {MatTabsModule} from '@angular/material/tabs';
+// import { TabComponent } from './components/commons/tab/tab.component';
+
 
 @NgModule({
   declarations: [
@@ -44,6 +52,16 @@ import { NewArticleComponent } from './components/views/new-article/new-article.
     FavoritedArticleComponent,
     MyArticleComponent,
     NewArticleComponent,
+// <<<<<<< createProfile_Article
+//     NewArticleComponent,
+//     MyProfileComponent,
+//     MyArticleComponent,
+//     FavoritedArticleComponent
+/
+//     TabComponent,
+//     NavBarComponent,
+// >>>>>>> master
+
   ],
   imports: [
     MatChipsModule,
