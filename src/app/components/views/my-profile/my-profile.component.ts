@@ -24,13 +24,20 @@ export class MyProfileComponent implements OnInit {
   ngOnInit(): void {
     this.currentUser = '';
     this.articleService
-      .getProfile(this.auth.currentUser.username)
-      .subscribe((res: any) => {
+      .getProfile(this.auth.currentUser.username).subscribe((res: any) => {
         this.currentUser = res.profile;
       });
   }
 
   goToSetting() {
     this.router.navigate(['setting']);
+  }
+
+  get getUserName() {
+    return this.currentUser.username;
+  }
+
+  get getUserImage() {
+    return this.currentUser.image
   }
 }

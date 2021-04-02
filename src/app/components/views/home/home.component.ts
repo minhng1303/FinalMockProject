@@ -1,4 +1,4 @@
-import { ArticleService } from 'src/app/services/ArticleService/article.service';
+import { ArticleService } from 'src/app/services/ArticleService/article.service'
 import { Component, OnInit } from '@angular/core';
 import { Article } from 'src/app/models/articles';
 import { Router } from '@angular/router';
@@ -28,22 +28,10 @@ export class HomeComponent implements OnInit {
     })
   }
 
-// <<<<<<< createProfile_Article
-//   goToArticle(article) {
-//     let slug = article.slug;
-//     // this.articleService.getSlugArticle(slug).subscribe((res:any) => {
-//     //   this.slugArticle = res;
-//     //   console.log(res);
-//     // })
-//     console.log(slug);
-
-//     this.router.navigate([`article/${slug}`]);
-// =======
-//   goToArticle(article) {    
-//     let slug = article.slug
-//     this.router.navigate([`article/${slug}`])
-// >>>>>>> master
-//   }
+  goToArticle(article) {    
+    let slug = article.slug
+    this.router.navigate([`article/${slug}`])
+  }
 
   showTagArticle(e) {
     this.articleService.getArticleByTag(e).subscribe(res => {
@@ -63,25 +51,27 @@ export class HomeComponent implements OnInit {
       this.router.navigate(['/','login']);
       return;
     }
-    // console.log(article);
-    this.articleService.addFavoriteArticle(article.slug).subscribe(res => {
-      this.isFavorited = true;
-      this.articleService.getArticle().subscribe((res: any) => {
-        this.articles = res.articles;
-      });
-    })
-  }
-
-  removeFavorite(article) {
+    if (!article.favorited) {
+      this.articleService.addFavoriteArticle(article.slug).subscribe(res => {
+        this.articles.map(ele => {
+          if (ele.slug == article.slug) {
+            article.favorited = true;
+            article.favoritesCount++;
+            }
+          })
+        });
+        return
+    }
     this.articleService.removeFavoriteArticle(article.slug).subscribe(res => {
-      // console.log(res);
-      this.isFavorited = false;
-      this.articleService.getArticle().subscribe((res: any) => {
-        this.articles = res.articles;
-      });
-    })
+      this.articles.map(ele => {
+        if (ele.slug == article.slug) {
+          article.favorited = false;
+          article.favoritesCount--;
+        }
+      })
+    }); 
   }
-
+  
   selectTab(tab: string) {
     this.selectedTab = tab;
     console.log(tab);

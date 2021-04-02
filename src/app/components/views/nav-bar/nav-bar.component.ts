@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { currentUser } from 'src/app/models/currentUser';
+import { registerUser } from 'src/app/models/registerUser';
 import { AuthService } from 'src/app/services/AuthService/auth.service';
+import { UserService } from 'src/app/services/UserService/user.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -8,15 +11,23 @@ import { AuthService } from 'src/app/services/AuthService/auth.service';
   styleUrls: ['./nav-bar.component.scss']
 })
 export class NavBarComponent implements OnInit {
+  image: string;
+  constructor(public auth: AuthService, private router: Router, private userService: UserService) {}
+
+  ngOnInit(): void { 
+  }
 
   logOut() {
     localStorage.removeItem('user');
     this.auth.setLogout();
     this.router.navigate(['login'])
   }
-  constructor(public auth: AuthService, private router: Router) { }
-
-  ngOnInit(): void {
+  
+  get getImage() {
+    this.userService.getUser(this.auth.currentUser.username).subscribe(res => {
+        this.image = res['image']
+    })
+    return this.image    
   }
 
 }

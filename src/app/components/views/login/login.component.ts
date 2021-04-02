@@ -29,9 +29,9 @@ export class LoginComponent implements OnInit {
   login(email,password) {
     this.auth.login(email,password).toPromise().then(data => {
       let currentUser = {
-        username: data.user.username,
-        email: data.user.email,
-        token: data.user.token
+        username: data.username,
+        email: data.email,
+        token: data.token
       }
       localStorage.setItem('user', JSON.stringify(currentUser))
       this.auth.isAuthenticated;
@@ -45,10 +45,5 @@ export class LoginComponent implements OnInit {
 
   get(val) {
     return this.loginForm.controls[val];
-  }
-
-  log() {
-    console.log(this.loginForm);
-    
   }
 }

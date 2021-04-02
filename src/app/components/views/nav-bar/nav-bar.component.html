@@ -64,7 +64,8 @@
             >Sign Up</a
           >
         </li>
-        <li class="nav-item" *ngIf="auth.isAuthenticated">
+        <li class="nav-item d-flex" *ngIf="auth.isAuthenticated">
+          <img src="{{ getImage }}" />
           <a class="nav-link" routerLinkActive="active" routerLink="profile">
             {{ auth.currentUser.username }}
           </a>

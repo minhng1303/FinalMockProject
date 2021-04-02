@@ -11,8 +11,7 @@ import { UserService } from 'src/app/services/UserService/user.service';
   styleUrls: ['./my-article.component.scss'],
 })
 export class MyArticleComponent implements OnInit {
-  mySlugArticle: Article;
-  myArticles: Article;
+  myArticles: Article[];
   username = this.auth.currentUser.username;
   userImage = '';
 
@@ -25,16 +24,14 @@ export class MyArticleComponent implements OnInit {
 
   ngOnInit(): void {
     this.getImageUrl
-    this.articleService.getArticleByAuthor(this.auth.currentUser.username)
-      .subscribe((res: any) => {
+    this.articleService.getArticleByAuthor(this.auth.currentUser.username).subscribe((res: any) => {
         this.myArticles = res.articles;
       });
   }
 
-  goToMyArticle(myArticle) {
-    console.log(myArticle);
-    let mySlugArticle = myArticle.slug;
-    this.router.navigate([`article/${mySlugArticle}`]);
+  goToMyArticle(article) {
+    let mySlug = article.slug;
+    this.router.navigate([`article/${mySlug}`]);
   }
 
   get getImageUrl() {
@@ -43,4 +40,6 @@ export class MyArticleComponent implements OnInit {
     });
     return this.userImage;
   }
+
+  
 }

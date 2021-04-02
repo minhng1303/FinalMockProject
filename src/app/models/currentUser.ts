@@ -1,5 +1,4 @@
 export interface currentUser {
-    user: {
         id: number;
         email: string;
         createdAt: string;
@@ -9,5 +8,5 @@ export interface currentUser {
         image?: any;
         token: string;
     }
-  }
+  
   

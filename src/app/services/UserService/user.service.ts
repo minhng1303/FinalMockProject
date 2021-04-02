@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { currentUser } from 'src/app/models/currentUser';
 
 @Injectable({
   providedIn: 'root',
@@ -8,7 +9,7 @@ export class UserService {
   constructor(private http: HttpClient) {}
 
   getUser(username) {
-    return this.http.get(
+    return this.http.get<currentUser>(
       `https://conduit.productionready.io/api/profiles/${username}`
     );
   }
@@ -26,14 +27,13 @@ export class UserService {
     );
   }
 
-  getUpdateUser(email,bio,image) {
-    console.log('successfully');
-    
+  getUpdateUser(password,bio,image,username) {    
     return this.http.put('https://conduit.productionready.io/api/user', {
       user:{
-          email: email,
+          password: password,
           bio: bio,
-          image: image
+          image: image,
+          username: username
       } 
     })
   }
